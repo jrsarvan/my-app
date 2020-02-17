@@ -19,8 +19,8 @@ node{
    }
    stage('Nexus Image Push'){
    sh "docker login -u admin -p admin123 13.233.83.129:8083"
-   sh "docker tag saidamo/myweb:0.0.2 13.233.83.129:8083/damo:1.0.0"
-   sh 'docker push 13.233.83.129:8083/damo:1.0.0'
+   sh "docker tag jrsarvan/myweb:0.0.2 13.233.83.129:8083/sarvan:1.0.0"
+   sh 'docker push 13.233.83.129:8083/sarvan:1.0.0'
    }
     stage('Remove Previous Container'){
 	try{
@@ -29,7 +29,7 @@ node{
 		//  do nothing if there is an exception
 	}
    stage('Docker deployment'){
-   sh 'docker run -d -p 8090:8080 --name tomcattest saidamo/myweb:0.0.2' 
+   sh 'docker run -d -p 8090:8080 --name tomcattest jrsarvan/myweb:0.0.2' 
    }
 }
 stage('SonarQube Analysis') {
